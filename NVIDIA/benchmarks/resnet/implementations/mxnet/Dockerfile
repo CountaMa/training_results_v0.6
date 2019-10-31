@@ -33,7 +33,7 @@ RUN pip install --no-cache-dir https://github.com/mlperf/training/archive/628999
  && pip install --no-cache-dir mpi4py==3.0.0
 
 # Copy ResNet-50 code
-COPY . .
+# COPY . .
 
 # Configure environment variables
 ENV MXNET_UPDATE_ON_KVSTORE=0      \
