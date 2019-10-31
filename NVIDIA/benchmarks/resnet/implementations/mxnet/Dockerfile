@@ -24,9 +24,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Install Python dependencies
 WORKDIR /workspace/image_classification
 
-COPY requirements.txt .
+# COPY requirements.txt .
+# RUN pip install --no-cache-dir https://github.com/mlperf/training/archive/6289993e1e9f0f5c4534336df83ff199bd0cdb75.zip#subdirectory=compliance \
+#  && pip install --no-cache-dir -r requirements.txt
+
 RUN pip install --no-cache-dir https://github.com/mlperf/training/archive/6289993e1e9f0f5c4534336df83ff199bd0cdb75.zip#subdirectory=compliance \
- && pip install --no-cache-dir -r requirements.txt
+ && pip install --no-cache-dir mlperf-compliance==0.6.0 \
+ && pip install --no-cache-dir mpi4py==3.0.0
 
 # Copy ResNet-50 code
 COPY . .
